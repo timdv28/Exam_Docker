@@ -4,6 +4,7 @@ import requests
 api_address = '127.0.0.1'
 # API port
 api_port = 8000
+
 # requête
 r = requests.get(
     url='http://{address}:{port}/permissions'.format(address=api_address, port=api_port),
