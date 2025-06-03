@@ -1,0 +1,22 @@
+### README ###
+The images can be created by using the command:
+- bash setup.sh
+
+This ensures image creation of all tests, as well as the activation of the docker-compose.
+
+To launch the individual containers, we can use commands:
+- docker container run -p 8000:8000 datascientest/fastapi:1.0.0
+- docker container run -p 5000:5000 -d authent_image:latest
+- docker container run -p 6000:6000 -d author_image:latest
+- docker container run -p 7000:7000 -d content_image:latest
+
+To query the tests in a different terminal, we use:
+Authentication:   curl -X GET -i http://localhost:5000
+Authorization:    curl -X GET -i http://localhost:6000
+Content:          curl -X GET -i http://localhost:7000
+
+The content of the tests can be altered inside the python scripts themselves,
+then the different outcomes of the tests can be observed.
+
+
+

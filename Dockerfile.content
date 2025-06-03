@@ -1,0 +1,8 @@
+FROM ubuntu:18.04
+ADD api_content.py /my_tests/api_content.py
+COPY requirements.txt /tmp/
+RUN apt-get update && apt-get install python3-pip -y && pip3 install -r /tmp/requirements.txt
+WORKDIR /my_tests
+EXPOSE 7000
+ENV LOG=1
+CMD python3 api_content.py

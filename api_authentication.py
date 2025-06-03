@@ -1,7 +1,12 @@
 import os
 import requests
+from flask import Flask
+
+server = Flask('authentication_server')
+
 # definition of the API address
-api_address = '127.0.0.1'
+
+api_address = 'fastapi'
 # API port
 api_port = 8000
 
@@ -31,8 +36,15 @@ if status_code == 200:
     test_status = 'SUCCESS'
 else:
     test_status = 'FAILURE'
-print(output.format(status_code=status_code, test_status=test_status))
-# printing in a file
+
+           
+@server.route('/')
+def index():
+    return output.format(status_code=status_code, test_status=test_status)
+
+if __name__ == '__main__':
+    server.run(host='0.0.0.0', port=5000)
+    
 if os.environ.get('LOG') == 1:
     with open('api_test.log', 'a') as file:
         file.write(output)
